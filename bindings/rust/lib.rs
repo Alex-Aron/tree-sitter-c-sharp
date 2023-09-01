@@ -10,7 +10,7 @@
 //! tree-sitter [Parser][], and then use the parser to parse some code:
 //!
 //! ```
-//! use tree_sitter::Parser;
+//! use tree_sitter_c2rust::Parser;
 //!
 //! let code = r#"
 //!     class Test {
@@ -61,7 +61,7 @@ pub const HIGHLIGHT_QUERY: &'static str = include_str!("../../queries/highlights
 mod tests {
     #[test]
     fn can_load_grammar() {
-        let mut parser = tree_sitter::Parser::new();
+        let mut parser = tree_sitter_c2rust::Parser::new();
         parser
             .set_language(super::language())
             .expect("Error loading C# grammar");
