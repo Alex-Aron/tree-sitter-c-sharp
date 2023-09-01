@@ -32,6 +32,9 @@
 
 use tree_sitter_c2rust::Language;
 
+#[cfg(target_arch = "wasm32")]
+mod c_alloc;
+
 extern "C" {
     fn tree_sitter_c_sharp() -> Language;
 }
