@@ -5,6 +5,13 @@ fn main() {
     let src_dir = Path::new("src");
 
     let mut c_config = cc::Build::new();
+    if std::env::var("TARGET").unwrap() == "wasm32-unknown-unknown" {
+        let sysroot_dir = std::path::Path::new("bindings/rust/wasm-sysroot");
+        c_config
+            .flag("-mbulk-memory")
+            .archiver("llvm-ar")
+            .include(&sysroot_dir);
+    }
     c_config.include(&src_dir);
     c_config
         .flag_if_supported("-Wno-unused-parameter")
