@@ -35,7 +35,6 @@ compile_error!("feature \"native\" and feature \"wasm\" cannot be enabled at the
 #[cfg(feature = "native")]
 use tree_sitter::Language;
 
-#[cfg(feature = "wasm")]
 use tree_sitter_c2rust::Language;
 
 // provide rust allocation functions to C if on wasm architecture
