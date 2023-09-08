@@ -29,8 +29,18 @@
 //! [language func]: fn.language.html
 //! [Parser]: https://docs.rs/tree-sitter/*/tree_sitter/struct.Parser.html
 //! [tree-sitter]: https://tree-sitter.github.io/
+#[cfg(all(feature = "native", feature = "wasm"))]
+compile_error!("feature \"native\" and feature \"wasm\" cannot be enabled at the same time");
 
+#[cfg(feature = "native")]
+use tree_sitter::Language;
+
+#[cfg(feature = "wasm")]
 use tree_sitter_c2rust::Language;
+
+// provide rust allocation functions to C if on wasm architecture
+#[cfg(target_arch = "wasm32")]
+mod wctype;
 
 extern "C" {
     fn tree_sitter_c_sharp() -> Language;

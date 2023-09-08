@@ -1,0 +1,1 @@
+int       iswspace(wint_t);

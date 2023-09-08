@@ -1,0 +1,1 @@
+pub extern "C" fn iswspace(wc: char) -> bool { char.isWhitespace() }
